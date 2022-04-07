@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JOGOS OLIMPICOS</h1>
+    
+
+    <h2>{{competicao.get_nome}}</h2>
+
+    <p>Local: {{competicao.get_local}}</p> 
+    <p>Data: {{competicao.get_dataHora}}</p>
+
+    {% if competicao.get_participantes is None %} 
+
+        <p>Competicao sem participantes.</p> 
+
+    {% else %}
+    <hr>
+
+        <ul>
+        {% for participante in competicao.get_participantes %}
+            <li>
+                <h5>
+                    {{participante.get_nome}}
+                </h5>
+                <p>
+                    Idade: {{participante.get_idade}} 
+                </p>
+                <p>
+                    Altura: {{participante.get_altura}} 
+                </p>
+                <p>
+                    Peso: {{participante.get_peso}}
+                </p>
+            </li>
+            <hr>
+        {%endfor%}
+        </ul>
+  
+        
+    {% endif %}
+    
+    <div>
+        <a href="{% url 'participantes_adicionar' competicao.get_id %}">Adicionar Participante</a>
+    </div>
+
+    
+    
+</body>
+</html>

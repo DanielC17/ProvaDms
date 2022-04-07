@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JOGOS OLIMPICOS</h1>
+    <div>
+        <a href="{% url 'competicao_adicionar' %}">Adicionar Competicao</a>
+    </div>
+
+    {% for competicao in lista_competicao %}
+    <div>
+            <h1>
+            <a href=" {% url 'acessa_competicao' competicao.get_id %} ">{{competicao.get_nome}}</a>
+            </h1>
+            <p>
+                Local: {{competicao.get_local}} Data: {{competicao.get_dataHora}}
+            </p>
+            <hr>
+            
+        </div>
+    </div>    
+    {%endfor%}
+    
+</body>
+</html>
